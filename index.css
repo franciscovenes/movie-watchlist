@@ -213,6 +213,7 @@ main > h3 {
 .add-films {
   font-weight: 700;
   font-size: 0.875rem;
+  color: #000000;
 }
 
 .remove {
