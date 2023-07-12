@@ -1,5 +1,7 @@
 async function renderFilmList(idList, element, action = "add") {
-  const watchList = localStorage.getItem("watchlist");
+  const watchList = localStorage.getItem("watchlist")
+    ? JSON.parse(localStorage.getItem("watchlist"))
+    : [];
 
   // Prepare html in a string literal
   let html = `<ul class="film-list">`;
