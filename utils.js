@@ -1,4 +1,6 @@
 async function renderFilmList(idList, element, action = "add") {
+  const watchList = localStorage.getItem("watchlist");
+
   // Prepare html in a string literal
   let html = `<ul class="film-list">`;
   for (let id of idList) {
@@ -23,7 +25,6 @@ async function renderFilmList(idList, element, action = "add") {
                         <div class="first-row">
                         <h3 class="film-title">${Title}</h3>
                         <p class="film-classification">${imdbRating}</p>
-                        <p class="message" id=${imdbID}></p>
                         </div>
                         <div class="second-row">
                         <p class="film-duration">${Runtime}</p>
@@ -32,11 +33,17 @@ async function renderFilmList(idList, element, action = "add") {
                           class="${
                             action === "remove"
                               ? "watchlist-btn remove"
+                              : watchList.includes(imdbID)
+                              ? "watchlist-btn disabled"
                               : "watchlist-btn"
                           }" 
                           data-id=${imdbID}
                         >${
-                          action === "remove" ? "Remove" : "Watchlist"
+                          action === "remove"
+                            ? "Remove"
+                            : watchList.includes(imdbID)
+                            ? "Already in your watchlist!"
+                            : "Watchlist"
                         }</button>
                         </div>
     

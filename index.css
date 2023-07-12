@@ -203,9 +203,12 @@ main > h3 {
   color: #6b7280;
 }
 
-.message {
-  color: red;
+.disabled {
+  background-image: none;
+  padding: 1em 0;
   font-weight: 500;
+  color: green;
+  cursor: not-allowed;
 }
 
 /* Specific styling for watchlist.html */

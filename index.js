@@ -18,16 +18,9 @@ document.addEventListener("click", (e) => {
     if (!watchList.includes(e.target.dataset.id)) {
       watchList.push(e.target.dataset.id);
       localStorage.setItem("watchlist", JSON.stringify(watchList));
-    } else {
-      // Display warning saying the film is already in the watchlist
-
-      document.getElementById(
-        e.target.dataset.id
-      ).textContent = `Already in your watchlist!`;
-
-      setTimeout(() => {
-        document.getElementById(e.target.dataset.id).textContent = "";
-      }, 2000);
+      e.target.textContent = "Already in your watchlist!";
+      e.target.disabled = "disabled";
+      e.target.classList.add("disabled");
     }
   }
 });
